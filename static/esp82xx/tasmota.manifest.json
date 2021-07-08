@@ -13,7 +13,7 @@
     },
     {
       "chipFamily": "ESP8266",
-      "parts": [{ "path": "http://ota.tasmota.com/tasmota/tasmota.bin", "offset": 0 }]
+      "parts": [{ "path": "https://github.com/arendst/Tasmota/raw/release-firmware/firmware/tasmota/tasmota.bin", "offset": 0 }]
     }
   ]
 }
