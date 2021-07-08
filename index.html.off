@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ESP Web Tools</title>
+    <meta
+      name="description"
+      content="Easily allow users to flash new Tasmota firmware for their ESP-devices on the web."
+    />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta property="og:title" content="ESP Web Tools" />
+    <meta property="og:site_name" content="ESP Web Tools" />
+    <meta
+      property="og:url"
+      content="https://jason2866.github.io/Tasmota-web-tools/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Easily allow users to flash new firmware for their ESP-devices on the web."
+    />
+    <script module>
+      import(
+        // In development we import locally.
+        window.location.hostname === "localhost"
+          ? "/dist/web/install-button.js"
+          : "https://unpkg.com/esp-web-tools@3.4.2/dist/web/install-button.js?module"
+      );
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>ESP Web Tools</h1>
+      <p>
+        ESP Web Tools is a set of open source tools to allow working with ESP
+        devices in the browser.
+      <p>
+        To try it out and install
+        <a href="http://ota.tasmota.com/tasmota//">the Tasmota firmware</a>, connect an ESP to
+        your computer and hit the button:
+      </p>
+      <esp-web-install-button
+        log-console
+        erase-first
+        manifest="static/firmware_build/manifest.json"
+      ></esp-web-install-button>
+      <p>
+        <i>
+          Note, this only works in desktop Chrome and Edge. Android support
+          should be possible but has not been implemented yet. If you don't see
+          your ESP device, you might miss <a href="#drivers">drivers</a>.
+        </i>
+      </p>
+      <p>
+        This works by combining
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API"
+          >Web Serial</a
+        >
+        with a manifest which describes the firmware. It will automatically
+        detect the type of the connected ESP device and find the right firmware
+        files in the manifest.
+      </p>
+      </pre>
+      <h3 id="drivers">USB Serial Drivers</h3>
+      <p>
+        If the serial port is not showing up, your computer might be missing the
+        drivers for the USB serial chip used in your ESP device. These drivers
+        work for most ESP devices:
+      </p>
+      <ul>
+        <li>
+          CP2102 (square chip):
+          <a
+            href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers"
+            >driver</a
+          >
+        </li>
+        <li>
+          CH341:
+          <a
+            href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers"
+            >driver</a
+          >
+        </li>
+      </ul>
+      <div class="footer">
+        <div>
+          ESP Web Tools –
+          <a href="https://github.com/esphome/esp-web-tools">GitHub</a>
+        </div>
+        <div class="initiative">
+          ESP Web Tools is a project by
+          <a href="https://esphome.io">ESPHome</a>.<br />
+          Development is funded by
+          <a href="https://www.nabucasa.com">Nabu Casa</a>.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
